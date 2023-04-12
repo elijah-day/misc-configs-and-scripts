@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# Optional setting the background using nitrogen...
+
+#nitrogen --restore &&
+
+# ...or setting the root window name.
+
+#while xsetroot -name "root window name"
+#do
+#	sleep 1
+#done &
+
+# For now, we'll just execute dwm
+
+exec dwm

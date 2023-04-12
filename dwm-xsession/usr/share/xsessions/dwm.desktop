@@ -1,0 +1,4 @@
+[Desktop Entry]
+Name=dwm
+Comment="dynamic window manager"
+Exec=dwm-xsession-start
