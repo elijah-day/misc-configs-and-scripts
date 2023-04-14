@@ -1,0 +1,117 @@
+*
+{
+	font:					"NimbusSans-Regular 10";
+	bgcol:					rgb(26, 28, 30);
+	bordercol:				rgb(9, 9, 10);
+	textcol:				rgb(158, 158, 158);
+	highlightcol:			bold rgb(191, 142, 47);
+	selectedcol:			rgb(79, 64, 35);
+}
+
+element
+{
+	border-color:			@bordercol;
+}
+
+window
+{
+	background-color:		@bgcol;
+	border-color:			@bordercol;
+	anchor:					center;
+	location:				center;
+	width:					50%;
+	height:					40%;
+	padding:				8px;
+	children:				[box];
+}
+
+box
+{
+	orientation:			vertical;
+
+	children:				[entry, listview];
+}
+
+entry
+{
+	background-color:		@bgcol;
+	text-color:				@textcol;
+	expand:					false;
+}
+
+listview
+{
+	border-color:			@bordercol;
+	spacing:				6px;
+}
+
+scrollbar
+{
+	background-color:		@bordercol;
+	handle-color:			@textcol;
+}
+
+element-text
+{
+	background-color:		@bgcol;
+	text-color:				@textcol;
+	highlight:				@highlightcol;
+}
+element-text selected
+{
+	background-color:		@selectedcol;
+}
+
+element normal
+{
+	background-color:		@bgcol;
+}
+element normal
+{
+    background-color:		var(bgcol);
+}
+element normal.normal
+{
+	background-color:		inherit;
+	text-color:				inherit;
+}
+element normal.urgent
+{
+	background-color:		inherit;
+	text-color:				inherit;
+}
+element normal.active
+{
+	background-color:		inherit;
+	text-color:				inherit;
+}
+element selected.normal
+{
+	background-color:		@selectedcol;
+	text-color:				inherit;
+}
+element selected.urgent
+{
+	background-color:		@selectedcol;
+	text-color:				inherit;
+}
+element selected.active
+{
+	background-color:		@selectedcol;
+	text-color:				inherit;
+}
+element alternate.normal
+{
+	background-color:		inherit;
+	text-color:				inherit;
+}
+element alternate.urgent
+{
+	background-color:		inherit;
+	text-color:				inherit;
+}
+element alternate.active
+{
+	background-color:		inherit;
+	text-color:				inherit;
+}
