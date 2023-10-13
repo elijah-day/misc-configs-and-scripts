@@ -1,0 +1,16 @@
+#!/bin/bash
+
+mapfile -t query_arr <<< `xbps-query -l`
+
+echo "Listing packages not marked as automatic-install..."
+echo "(Note that some of the base system packages are not marked as automatic-install.)"
+
+for i in "${query_arr[@]}"
+do
+	package=`echo "$i" | awk '{print $2}'`
+	is_automatic=`xbps-query "$package" | grep -c "automatic-install: yes"`
+	if [ $is_automatic == 0 ]
+	then
+		echo "- $package"
+	fi
+done
