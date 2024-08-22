@@ -1,0 +1,14 @@
+#!/bin/bash
+
+cd "$1"
+
+for wav_file_name in *; do
+	if [ -f "$wav_file_name" ]; then
+		echo $wav_file_name >> file_name.txt
+		sed -i 's/.wav/.flac/g' file_name.txt
+		flac_file_name=`cat file_name.txt`
+		echo "$flac_file_name"
+		ffmpeg -i "$wav_file_name" "$flac_file_name"
+		rm file_name.txt
+	fi
+done
