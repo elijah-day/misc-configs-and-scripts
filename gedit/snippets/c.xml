@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='utf-8'?>
+<snippets language="c">
+  <snippet override="c-do">
+    <description>do .. while</description>
+  </snippet>
+  <snippet override="c-else">
+    <description>else</description>
+  </snippet>
+  <snippet override="c-elif">
+    <description>else if</description>
+  </snippet>
+  <snippet override="c-endif">
+    <description>#endif</description>
+  </snippet>
+  <snippet override="c-for">
+    <description>for loop</description>
+  </snippet>
+  <snippet override="c-ginterface">
+    <description>GObject interface</description>
+  </snippet>
+  <snippet override="c-gobject">
+    <description>GObject template</description>
+  </snippet>
+  <snippet override="c-gpl">
+    <description>GPL License</description>
+  </snippet>
+  <snippet override="c-if">
+    <description>if</description>
+  </snippet>
+  <snippet override="c-inc">
+    <description>#include ".."</description>
+  </snippet>
+  <snippet override="c-Inc">
+    <description>#include &lt;..&gt;</description>
+  </snippet>
+  <snippet override="c-lgpl">
+    <description>LGPL License</description>
+  </snippet>
+  <snippet override="c-main">
+    <description>main</description>
+  </snippet>
+  <snippet override="c-struct">
+    <description>struct</description>
+  </snippet>
+  <snippet override="c-td">
+    <description>typedef</description>
+  </snippet>
+  <snippet override="c-while">
+    <description>while loop</description>
+  </snippet>
+  <snippet>
+    <tag>main</tag>
+    <text><![CDATA[int main(int argc, char *argv[])
+{
+	$0
+	return 0;
+}]]></text>
+    <description>C_MAIN_FUNCTION</description>
+  </snippet>
+  <snippet>
+    <tag>if</tag>
+    <text><![CDATA[if(${1:...})
+{
+	${2:...}
+}
+$0]]></text>
+    <description>C_IF</description>
+  </snippet>
+  <snippet>
+    <tag>for</tag>
+    <text><![CDATA[for(${1:...}; ${2:...}; ${3:...})
+{
+	${4:...}
+}
+$0]]></text>
+    <description>C_FOR</description>
+  </snippet>
+  <snippet>
+    <tag>while</tag>
+    <text><![CDATA[while(${1:...})
+{
+	${2:...}
+}
+$0]]></text>
+    <description>C_WHILE</description>
+  </snippet>
+  <snippet>
+    <tag>ig</tag>
+    <text><![CDATA[#ifndef ${1:...}
+#define ${1:...}
+
+$0
+
+#endif /* ${1:...} */]]></text>
+    <description>C_INCLUDE_GUARD</description>
+  </snippet>
+  <snippet>
+    <tag>cc</tag>
+    <text><![CDATA[/* ${1:...} */$0]]></text>
+    <description>C_CODE_COMMENT</description>
+  </snippet>
+  <snippet>
+    <tag>f</tag>
+    <text><![CDATA[${1:...}(${2:...})
+{
+	$0
+}]]></text>
+    <description>C_GENERIC_FUNCTION</description>
+  </snippet>
+  <snippet>
+    <tag>inc</tag>
+    <text><![CDATA[#include "${1:...}"$0]]></text>
+    <description>C_LOCAL_INCLUDE</description>
+  </snippet>
+  <snippet>
+    <tag>Inc</tag>
+    <text><![CDATA[#include <${1:...}>$0]]></text>
+    <description>C_LIBRARY_INCLUDE</description>
+  </snippet>
+</snippets>
