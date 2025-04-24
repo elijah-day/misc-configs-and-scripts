@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='utf-8'?>
+<snippets language="chdr">
+  <snippet override="chdr-class">
+    <description>class ..</description>
+  </snippet>
+  <snippet override="chdr-ginterface">
+    <description>GObject interface</description>
+  </snippet>
+  <snippet override="chdr-gobject">
+    <description>GObject template</description>
+  </snippet>
+  <snippet override="chdr-gpl">
+    <description>GPL License</description>
+  </snippet>
+  <snippet override="chdr-once">
+    <description>Header Include-Guard</description>
+  </snippet>
+  <snippet override="chdr-inc">
+    <description>#include ".."</description>
+  </snippet>
+  <snippet override="chdr-Inc">
+    <description>#include &lt;..&gt;</description>
+  </snippet>
+  <snippet override="chdr-lgpl">
+    <description>LGPL License</description>
+  </snippet>
+  <snippet override="chdr-namespace">
+    <description>namespace ..</description>
+  </snippet>
+  <snippet override="chdr-struct">
+    <description>struct</description>
+  </snippet>
+  <snippet override="chdr-template">
+    <description>template &lt;typename ..&gt;</description>
+  </snippet>
+  <snippet override="chdr-td">
+    <description>typedef</description>
+  </snippet>
+  <snippet>
+    <tag>cc</tag>
+    <text><![CDATA[/* ${1:...} */$0]]></text>
+    <description>H_CODE_COMMENT</description>
+  </snippet>
+  <snippet>
+    <tag>ig</tag>
+    <text><![CDATA[#ifndef ${1:...}
+#define ${1:...}
+
+$0
+
+#endif /* ${1:...} */]]></text>
+    <description>H_INCLUDE_GUARD</description>
+  </snippet>
+  <snippet>
+    <tag>lic</tag>
+    <text><![CDATA[#include <${1:...}>$0]]></text>
+    <description>H_LIBRARY_INCLUDE</description>
+  </snippet>
+  <snippet>
+    <tag>loc</tag>
+    <text><![CDATA[#include "${1:...}"$0]]></text>
+    <description>H_LOCAL_INCLUDE</description>
+  </snippet>
+  <snippet>
+    <tag>ts</tag>
+    <text><![CDATA[typedef struct ${1:...}
+{
+	$0
+}
+${1:...};]]></text>
+    <description>H_TYPEDEF_STRUCT</description>
+  </snippet>
+  <snippet>
+    <tag>te</tag>
+    <text><![CDATA[typedef enum ${1:...}
+{
+	$0
+}
+${1:...};]]></text>
+    <description>H_TYPEDEF_ENUM</description>
+  </snippet>
+</snippets>

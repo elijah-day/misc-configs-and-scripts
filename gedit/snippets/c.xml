@@ -49,7 +49,7 @@
     <description>while loop</description>
   </snippet>
   <snippet>
-    <tag>main</tag>
+    <tag>mf</tag>
     <text><![CDATA[int main(int argc, char *argv[])
 {
 	$0
@@ -61,38 +61,25 @@
     <tag>if</tag>
     <text><![CDATA[if(${1:...})
 {
-	${2:...}
-}
-$0]]></text>
+	$0
+}]]></text>
     <description>C_IF</description>
   </snippet>
   <snippet>
     <tag>for</tag>
     <text><![CDATA[for(${1:...}; ${2:...}; ${3:...})
 {
-	${4:...}
-}
-$0]]></text>
+	$0
+}]]></text>
     <description>C_FOR</description>
   </snippet>
   <snippet>
     <tag>while</tag>
     <text><![CDATA[while(${1:...})
 {
-	${2:...}
-}
-$0]]></text>
+	$0
+}]]></text>
     <description>C_WHILE</description>
-  </snippet>
-  <snippet>
-    <tag>ig</tag>
-    <text><![CDATA[#ifndef ${1:...}
-#define ${1:...}
-
-$0
-
-#endif /* ${1:...} */]]></text>
-    <description>C_INCLUDE_GUARD</description>
   </snippet>
   <snippet>
     <tag>cc</tag>
@@ -100,7 +87,7 @@ $0
     <description>C_CODE_COMMENT</description>
   </snippet>
   <snippet>
-    <tag>f</tag>
+    <tag>gf</tag>
     <text><![CDATA[${1:...}(${2:...})
 {
 	$0
@@ -108,12 +95,12 @@ $0
     <description>C_GENERIC_FUNCTION</description>
   </snippet>
   <snippet>
-    <tag>inc</tag>
+    <tag>loc</tag>
     <text><![CDATA[#include "${1:...}"$0]]></text>
     <description>C_LOCAL_INCLUDE</description>
   </snippet>
   <snippet>
-    <tag>Inc</tag>
+    <tag>lic</tag>
     <text><![CDATA[#include <${1:...}>$0]]></text>
     <description>C_LIBRARY_INCLUDE</description>
   </snippet>
