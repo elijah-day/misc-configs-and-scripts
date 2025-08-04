@@ -1,0 +1,104 @@
+#!/bin/bash
+
+# All variables are global.  It isn't good practice, but it works for a short script like this.
+
+print_file_data ()
+{
+	echo ""
+	echo "[$file]"
+	echo "Title: $title"
+	echo "Artist: $artist"
+	echo "Album Artist: $album_artist"
+	echo "Album: $album"
+	echo "Track: $track"
+	echo "Disc: $disc"
+}
+
+extract_metadata_tag ()
+{
+	tag_prefix="$1"
+
+	# Extract tag from tag prefix
+	echo "$metadata" | grep "$tag_prefix" | sed -e "s/$tag_prefix\(.*\)/\1/"
+}
+
+format_tag_number ()
+{
+	tag=$1
+
+	# Extract number before "/" character.
+	tag="${tag%%/*}"
+
+	# If extracted number is empty then return a default "01" (mainly for discs!)
+	if [ -z "$tag" ]; then
+		echo "01"
+		return
+	fi
+
+	# If extracted number is less than 2 characters in length, then append a leading "0".
+	if [  ${#tag} -gt 0 -a ${#tag} -lt 2 ]; then
+		echo "0$tag"
+		return
+	fi
+
+	# Otherwise, return extracted number unchanged
+	echo "$tag"
+}
+
+format_tag_string ()
+{
+	tag="$1"
+
+	# Replace unusable characters from tag strings (things like slashes, colons, etc.)
+	echo "$album_artist" | sed "s/\//\\\/g"
+}
+
+rename_music_files ()
+{
+	file_extension="$1"
+
+	for file in *."$file_extension"; do
+		# Obtain metadata string
+		metadata=`ffprobe -v quiet -show_format "$file"`
+
+		# Extract tags from whole metadata
+		title="$(extract_metadata_tag $title_prefix)"
+		artist="$(extract_metadata_tag $artist_prefix)"
+		album="$(extract_metadata_tag $album_prefix)"
+		album_artist="$(extract_metadata_tag $album_artist_prefix)"
+		track="$(extract_metadata_tag $track_prefix)"
+		disc="$(extract_metadata_tag $disc_prefix)"
+
+		# Fall back on artist name if there is no album artist
+		if [ -z $album_artist ]; then
+			album_artist="$artist"
+		fi
+
+		# Format tags
+		track="$(format_tag_number $track)"
+		disc="$(format_tag_number $disc)"
+		album_artist="$(format_tag_string $album_artist)"
+
+		print_file_data
+
+		dir="$album_artist/$album"
+		mkdir -p "$dir"
+		mv "$file" "$dir/$disc-$track $title.$file_extension"
+	done
+}
+
+title_prefix="TAG:title="
+artist_prefix="TAG:artist="
+album_prefix="TAG:album="
+album_artist_prefix="TAG:album_artist="
+track_prefix="TAG:track="
+disc_prefix="TAG:disc="
+rename_music_files "mp3"
+
+title_prefix="TAG:TITLE="
+artist_prefix="TAG:ARTIST="
+album_prefix="TAG:ALBUM="
+album_artist_prefix="TAG:album_artist="
+track_prefix="TAG:track="
+disc_prefix="TAG:disc="
+rename_music_files "flac"
