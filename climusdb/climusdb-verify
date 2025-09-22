@@ -1,0 +1,15 @@
+#!/bin/bash
+
+checksum_cmd="md5sum"
+mus_db_file=".music.tsv"
+tab_char=$'\t'
+
+for file in "$@"; do
+    checksum="`"$checksum_cmd" "$file"`"
+    grep_out=`grep "$checksum" "$mus_db_file"`
+    if [ -z "$grep_out" ]; then
+        echo "$file: Checksum error!"
+    else
+        echo "$file: Okay"
+    fi
+done

@@ -1,0 +1,57 @@
+#!/bin/bash
+
+checksum_cmd="md5sum"
+mus_db_file=".music.tsv"
+tab_char=$'\t'
+
+check_mus_not_in_db ()
+{
+    mus_file="$1"
+    grep_out=`grep "$mus_file" "$mus_db_file"`
+
+    if [ -z "$grep_out" ]; then
+        # Music file is NOT in the database
+        return 0
+    fi
+
+    # Music file is in the database
+    return 1
+}
+
+rename_mus ()
+{
+    mus_file_old="$1"
+
+    # Obtain new music file name
+    file_extension="${file##*.}"
+    mus_file_new="`uuidgen`.$file_extension"
+
+    # Rename music file from old name to new name
+    mv "$mus_file_old" "$mus_file_new"
+
+    # Return new music file name
+    echo "$mus_file_new"
+}
+
+add_mus_to_db ()
+{
+    mus_file="$1"
+
+    # Obtain music file checksum
+    checksum="`$checksum_cmd $mus_file`"
+
+    # Write data to database file
+    mus_data="$mus_file$tab_char$checksum"
+    echo "$mus_data" >> "$mus_db_file"
+}
+
+for file in "$@"; do
+    if check_mus_not_in_db "$file"; then
+        file="`rename_mus "$file"`"
+        add_mus_to_db "$file"
+        echo "$file: Added new to database"
+    else
+        echo "$file: Already present in database!"
+    fi
+
+done
